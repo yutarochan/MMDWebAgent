@@ -1,0 +1,27 @@
+[OpenJTalk Build Instructions]
+
+1. HTS Engine Build and Installation
+The HTS Engine is a required dependecy of OpenJTalk.
+
+a. Download and unpack the source and cd into the file.
+b. Run: % ./configure
+c. Run: % make
+d. Run with elevated permissions: % sudo make install
+
+*Note*
+As of version 1.09 of the hts-engine, it appears that the files are built
+under the directory /usr/local/ and does not create a separate folder to
+house the hts-engine. To fix, adjust the directories accordingly or else
+OpenJTalk will not run correctly during the make process.
+(Hence yielding the hts-engine.h not found error...)
+
+2. OpenJTalk Build and Installation
+a. Run the following command with the proper configuration parameters.
+   % ./configure \
+     --with-hts-engine-header-path=/usr/local/hts_engine_API/include \
+     --with-hts-engine-library-path=/usr/local/hts_engine_API/lib \
+     --with-charset=UTF-8
+b. Run: % make
+c. Run with elevated permissions: % sudo make install
+
+3. Testing OpenJTalk
